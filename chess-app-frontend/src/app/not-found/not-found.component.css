@@ -1,0 +1,10 @@
+header {
+    display: flex;
+}
+
+a {
+    color: lightblue;
+    text-decoration: none;
+
+    /*background-color: blue;*/
+}

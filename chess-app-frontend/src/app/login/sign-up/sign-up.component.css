@@ -1,0 +1,9 @@
+main {
+    height: 400px;
+    width: 200px;
+    background: gray;
+}
+
+input {
+    width: 180px;
+}
