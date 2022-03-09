@@ -1,6 +1,13 @@
 import express from 'express';
 import path from 'path';
 
+import mongoose from 'mongoose';
+
+import newUserController from './controllers/newUser.js';
+
+// connect to MongoDB
+mongoose.connect('mongodb://localhost/my_database');
+
 // set middleware
 const app = express();
 
@@ -19,17 +26,19 @@ app.listen(port, () => {
 
 // send index.html
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './public/stocks/index.html'));
+    res.sendFile(path.resolve(__dirname, './dummy-public/stocks/index.html'));
 });
 
 app.get('/main.a5a6ab77e42512e5.js', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './public/stocks/main.a5a6ab77e42512e5.js'));
+    res.sendFile(path.resolve(__dirname, './dummy-public/stocks/main.a5a6ab77e42512e5.js'));
 });
 
 app.get('/polyfills.0e091a1864f291df.js', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './public/stocks/polyfills.0e091a1864f291df.js'));
+    res.sendFile(path.resolve(__dirname, './dummy-public/stocks/polyfills.0e091a1864f291df.js'));
 });
 
 app.get('/runtime.f98ba85b57538d43.js', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './public/stocks/runtime.f98ba85b57538d43.js'))
+    res.sendFile(path.resolve(__dirname, './dummy-public/stocks/runtime.f98ba85b57538d43.js'))
 });
+
+app.use((req, res) => res.sendFile(path.resolve(__dirname, './public/notfound.html')));
