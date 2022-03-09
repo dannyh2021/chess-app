@@ -1,0 +1,10 @@
+section {
+    height: 800px;
+    width: 800px;
+    background-color: black;
+}
+
+.board {
+    width: 400px;
+    background-color: blue;
+}

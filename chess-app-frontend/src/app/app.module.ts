@@ -11,12 +11,22 @@ import { SignUpComponent } from './login/sign-up/sign-up.component';
 import { PasswordResetComponent } from './login/password-reset/password-reset.component';
 import { NewsComponent } from './news/news.component';
 import { GameComponent } from './game/game/game.component';
+import { MatchInfoComponent } from './game/match-info/match-info.component';
+import { ChatComponent } from './game/chat/chat.component';
+import { ControllerComponent } from './game/controller/controller.component';
+import { BoardComponent } from './game/board/board.component';
+import { ForumComponent } from './forum/forum/forum.component';
+import { BlogsComponent } from './blog/blogs/blogs.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'password-reset', component: PasswordResetComponent },
-  { path: '', redirectTo:'/login', pathMatch: 'full' },
+  { path: 'play', component: GameComponent },
+  { path: 'news', component: NewsComponent },
+  { path: 'forum' , component: ForumComponent },
+  { path: 'blog', component: BlogsComponent },
+  { path: '', redirectTo:'/play', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -29,7 +39,13 @@ const appRoutes: Routes = [
     SignUpComponent,
     PasswordResetComponent,
     NewsComponent,
-    GameComponent
+    GameComponent,
+    MatchInfoComponent,
+    ChatComponent,
+    ControllerComponent,
+    BoardComponent,
+    ForumComponent,
+    BlogsComponent
   ],
   imports: [
     BrowserModule,

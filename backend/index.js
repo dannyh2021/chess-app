@@ -1,15 +1,19 @@
 import express from 'express';
 import path from 'path';
+import bodyParser from 'body-parser';
 
 import mongoose from 'mongoose';
 
 import newUserController from './controllers/newUser.js';
+import loginUserController from './controllers/loginUser.js';
 
 // connect to MongoDB
 mongoose.connect('mongodb://localhost/my_database');
 
 // set middleware
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 const __dirname = path.resolve();
 
@@ -24,21 +28,34 @@ app.listen(port, () => {
     console.log('App listening on port 3000');
 });
 
-// send index.html
+app.post('/users/register', newUserController);
+
+app.post('/users/login', loginUserController);
+
+// send frontend index.html (in development)
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './dummy-public/stocks/index.html'));
+    res.sendFile(path.resolve(__dirname, './public/frontend/index.html'));
 });
 
-app.get('/main.a5a6ab77e42512e5.js', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './dummy-public/stocks/main.a5a6ab77e42512e5.js'));
+app.get('/script.js', (req, res) => {
+    res.sendFile(path.resolve(__dirname, './public/frontend/script.js'));
 });
 
-app.get('/polyfills.0e091a1864f291df.js', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './dummy-public/stocks/polyfills.0e091a1864f291df.js'));
+app.get('/polyfill.js', (req, res) => {
+    res.sendFile(path.resolve(__dirname, './public/frontend/polyfill.js'));
 });
 
-app.get('/runtime.f98ba85b57538d43.js', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './dummy-public/stocks/runtime.f98ba85b57538d43.js'))
+app.get('/runtime.js', (req, res) => {
+    res.sendFile(path.resolve(__dirname, './public/frontend/runtime.js'));
 });
 
+app.get('/styles.css', (req, res) => {
+    res.sendFile(path.resolve(__dirname, './public/frontend/styles.css'));
+});
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, './public/frontend/index.html'));
+});
+
+// send not-found page
 app.use((req, res) => res.sendFile(path.resolve(__dirname, './public/notfound.html')));
