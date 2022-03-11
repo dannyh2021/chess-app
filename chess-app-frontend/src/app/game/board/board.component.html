@@ -1,6 +1,9 @@
-
-
 <section>
     <p>board: to be implemented</p>
-    <div id="board" class="board">board</div>
+    <button (click)="test()">test button</button>
+    <ngx-chess-board #board
+        [size]="800"
+        [lightTileColor]="'#9eba8c'"
+        [darkTileColor]="'#557043'"
+    ></ngx-chess-board>
 </section>

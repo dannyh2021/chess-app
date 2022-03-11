@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AccountService } from './account.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'chess-app-frontend';
+
+  constructor(private accountService: AccountService) { }
 }

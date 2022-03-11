@@ -15,8 +15,16 @@ import { MatchInfoComponent } from './game/match-info/match-info.component';
 import { ChatComponent } from './game/chat/chat.component';
 import { ControllerComponent } from './game/controller/controller.component';
 import { BoardComponent } from './game/board/board.component';
-import { ForumComponent } from './forum/forum/forum.component';
 import { BlogsComponent } from './blog/blogs/blogs.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { AccountService } from './account.service';
+
+import { FormsModule } from '@angular/forms';
+import { ForumsComponent } from './forums/forums/forums.component';
+import { ForumComponent } from './forums/forum/forum.component';
+
+import { NgxChessBoardModule } from 'ngx-chess-board';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,7 +32,7 @@ const appRoutes: Routes = [
   { path: 'password-reset', component: PasswordResetComponent },
   { path: 'play', component: GameComponent },
   { path: 'news', component: NewsComponent },
-  { path: 'forum' , component: ForumComponent },
+  { path: 'forum' , component: ForumsComponent },
   { path: 'blog', component: BlogsComponent },
   { path: '', redirectTo:'/play', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
@@ -44,14 +52,18 @@ const appRoutes: Routes = [
     ChatComponent,
     ControllerComponent,
     BoardComponent,
-    ForumComponent,
-    BlogsComponent
+    BlogsComponent,
+    ForumsComponent,
+    ForumComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes),
+    NgxChessBoardModule.forRoot()
   ],
-  providers: [],
+  providers: [AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -20,6 +20,8 @@
     "@angular/router": "~13.2.0",
     "@chrisoakman/chessboardjs": "^1.0.0",
     "chess.js": "^0.12.1",
+    "chessground": "^8.2.0",
+    "ngx-chess-board": "^2.2.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -30,7 +32,7 @@
     "@angular/compiler-cli": "~13.2.0",
     "@types/chess.js": "^0.11.2",
     "@types/jasmine": "~3.10.0",
-    "@types/node": "^12.11.1",
+    "@types/node": "^12.20.47",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",

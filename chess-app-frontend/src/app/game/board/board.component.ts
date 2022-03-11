@@ -1,18 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { Chess } from 'chess.js';
-// import Chessboard from '../../../js/chessboard-1.0.0';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import * as ChessJS from 'chess.js';
+import { NgxChessBoardService, NgxChessBoardView } from 'ngx-chess-board';
+
+const Chess = typeof ChessJS === 'function' ? ChessJS : ChessJS.Chess;
+const chess = new Chess();
+
+const config = {
+  fen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR'
+};
+const options = {
+  orientation: 'white'
+};
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['../../../css/chessboard-1.0.0.css', './board.component.css'],
 })
-export class BoardComponent implements OnInit {
-  // let board = Chessboard('board', 'start');
+export class BoardComponent implements OnInit, AfterViewInit {
+  @ViewChild('board', {static: false}) board!: NgxChessBoardView;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private ngxChessBoardService: NgxChessBoardService) {
+    console.log('constructor');
+    //console.log(this.board);
   }
 
+  ngOnInit(): void {
+    console.log('ngOnInit() of board component.');
+    //console.log(this.board);
+  }
+
+  ngAfterViewInit(): void {
+    console.log('after view init');
+  }
+
+  reset() {
+    this.board.reset();
+  }
+
+  test() {
+    this.reset();
+  }
 }
