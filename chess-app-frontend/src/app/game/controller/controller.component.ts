@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from '@angular/core';
+import { AccountService } from 'src/app/account.service';
 
 @Component({
   selector: 'app-controller',
@@ -9,25 +10,13 @@ export class ControllerComponent implements OnInit {
   @Input() chess: any;
   @Output() onUndo: EventEmitter<null> = new EventEmitter<null>();
   @Output() onRestart: EventEmitter<null> = new EventEmitter<null>();
+  @Output() onSave: EventEmitter<null> = new EventEmitter<null>();
   moveHistory: string = '';
 
-  constructor() { }
+  constructor(public accountService: AccountService) { }
 
   ngOnInit(): void {
   }
-
-  /* ngOnChanges(): void {
-    this.moveHistory += '1';
-  }*/
-
-  /*update(): void {
-    this.moveHistory = '';
-    const moves = this.chess.history();
-    console.log(moves.length);
-    for (let i = 0; i < moves.length; i += 2) {
-      this.moveHistory += ((i/2 + 1) + '.\t' + moves[i] + ' ' + (moves[i+1] ? moves[i+1] : '') + '\n')
-    }
-  }*/
 
   setMoveHistory(moves: any): void {
     this.moveHistory = '';

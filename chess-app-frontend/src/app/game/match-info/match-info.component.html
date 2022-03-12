@@ -7,7 +7,7 @@
         <option value="random">Random Move Generator</option>
         <option value="AI" selected="selected">Depth 3 Minimax AI</option>
         <option value="localPVP" disabled>Local PvP (to be implemented)</option>
-        <option value="OnlinePVP" disabled>Online Pvp (to be implemented)</option>
+        <option value="OnlinePVP" disabled>Online PvP (to be implemented)</option>
     </select>
-    <p>{{status}}</p>
+    <p *ngIf="select.value === 'AI'">Note: AI may take a moment to generate best move.</p>
 </section>

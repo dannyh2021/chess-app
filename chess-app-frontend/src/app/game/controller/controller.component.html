@@ -1,11 +1,10 @@
 <section class="box">
     <div class="info">
-        <span>Status: <span id="status"></span></span>
-        <br>
         <span>
             <button (click)="onRestart.emit()">Restart</button>
             <button (click)="onUndo.emit()">Undo</button>
-            <button>dev test</button>
+            <button *ngIf="accountService.loggedIn()" (click)="onSave.emit()">Save Game</button>
+            <p *ngIf="!accountService.loggedIn()">Please log in if you would like to save your game.</p>
         </span>
         <br>
 

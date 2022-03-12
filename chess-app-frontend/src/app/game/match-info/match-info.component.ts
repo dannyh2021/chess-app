@@ -7,7 +7,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class MatchInfoComponent implements OnInit {
   @Input() username: string = 'GUEST';
-  @Input() status: string = 'Currently playing.';
   @Output() modeChange: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
@@ -19,5 +18,4 @@ export class MatchInfoComponent implements OnInit {
     console.log('mode change event fired');
     this.modeChange.emit('Hello');
   }
-
 }

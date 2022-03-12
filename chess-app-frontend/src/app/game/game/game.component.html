@@ -21,7 +21,9 @@
     <div>
         <app-controller
             [chess]="chess"
+            (onUndo)="undo()"
             (onRestart)="resetGame()"
+            (onSave)="saveGame()"
         ></app-controller>
     </div>
 </main>

@@ -24,6 +24,10 @@ export class AccountService {
     return this.userSubject.value;
   } */
 
+  saveGame(username: string, pgn: string) {
+    return this.http.post('http://localhost:3000/games/save', { username, pgn, date: new Date() });
+  }
+  
   getUsername(): string {
     if (this.cookieService.check('username')) {
       return this.cookieService.get('username');
