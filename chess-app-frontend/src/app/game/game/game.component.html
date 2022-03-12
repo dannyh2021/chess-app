@@ -1,12 +1,30 @@
 <main>
     <div class="left-panel">
-        <app-match-info></app-match-info>
+        <app-match-info
+            [username]="accountService.getUsername()"
+            (modeChange)="onModeChange($event)"
+        ></app-match-info>
         <app-chat></app-chat>
     </div>
     <div>
-        <app-board></app-board>
+        <!-- <app-board
+            (moveChange)="onMoveChange($event)"
+        ></app-board> -->
+        <ngx-chess-board #board
+        [size]="600"
+        [lightTileColor]="'#9eba8c'"
+        [darkTileColor]="'#557043'"
+        [darkDisabled]="blackDisabled"
+        (moveChange)="onMoveChange($event)"
+    ></ngx-chess-board>
     </div>
     <div>
-        <app-controller></app-controller>
+        <app-controller
+            [chess]="chess"
+            (onRestart)="resetGame()"
+        ></app-controller>
     </div>
 </main>
+<div id="spacer">
+    
+</div>

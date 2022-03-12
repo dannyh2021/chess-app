@@ -1,9 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import * as ChessJS from 'chess.js';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { NgxChessBoardService, NgxChessBoardView } from 'ngx-chess-board';
-
-const Chess = typeof ChessJS === 'function' ? ChessJS : ChessJS.Chess;
-const chess = new Chess();
 
 const config = {
   fen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR'
@@ -19,6 +15,8 @@ const options = {
 })
 export class BoardComponent implements OnInit, AfterViewInit {
   @ViewChild('board', {static: false}) board!: NgxChessBoardView;
+  @Output() moveChange = new EventEmitter<any>();
+  pgn: string = "";
 
   constructor(private ngxChessBoardService: NgxChessBoardService) {
     console.log('constructor');
@@ -34,11 +32,11 @@ export class BoardComponent implements OnInit, AfterViewInit {
     console.log('after view init');
   }
 
-  reset() {
-    this.board.reset();
+  onMoveChange(event: any) {
+    this.moveChange.emit(event);
   }
 
-  test() {
-    this.reset();
+  updateStatus() {
+
   }
 }

@@ -1,19 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@angular/core';
 import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnChanges {
+  /* @Input() loggedIn = false; */
 
-  constructor(private accountService: AccountService) { }
+  constructor(public accountService: AccountService) { }
 
   ngOnInit(): void {
   }
 
+  ngOnChanges(): void {
+    // console.log("navbar loggedin: ", this.loggedIn);
+  }
+
+  logOut(): void {
+    this.accountService.logOut();
+    //this.loggedIn = false;
+  }
+
   test() {
-    console.log('stored user_id', this.accountService.userValue);
+    console.log('profile clicked');
   }
 }

@@ -1,9 +1,8 @@
 <section>
-    <p>board: to be implemented</p>
-    <button (click)="test()">test button</button>
     <ngx-chess-board #board
-        [size]="800"
+        [size]="600"
         [lightTileColor]="'#9eba8c'"
         [darkTileColor]="'#557043'"
+        (moveChange)="onMoveChange($event)"
     ></ngx-chess-board>
 </section>

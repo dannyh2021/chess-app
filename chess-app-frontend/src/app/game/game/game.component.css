@@ -5,3 +5,7 @@ main {
 div {
     margin-left: 20px;
 }
+
+#spacer {
+    height: 100px;
+}

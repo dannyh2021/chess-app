@@ -26,6 +26,8 @@ import { ForumComponent } from './forums/forum/forum.component';
 
 import { NgxChessBoardModule } from 'ngx-chess-board';
 
+import { CookieService } from 'ngx-cookie-service';
+
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
@@ -63,7 +65,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     NgxChessBoardModule.forRoot()
   ],
-  providers: [AccountService],
+  providers: [AccountService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,13 @@
-<section>
-    <p>match-info component: to be completed</p>
-    <p>Black: user1</p>
-    <p>White: user2</p>
-    <p>Currently playing.</p>
+<section class="box">
+    <h1>Match Info</h1>
+    <p>White: {{username}}</p>
+    <p>Black: CPU</p>
+    Mode: 
+    <select name="mode" #select (change)="modeChange.emit(select.value)">
+        <option value="random">Random Move Generator</option>
+        <option value="AI" selected="selected">Depth 3 Minimax AI</option>
+        <option value="localPVP" disabled>Local PvP (to be implemented)</option>
+        <option value="OnlinePVP" disabled>Online Pvp (to be implemented)</option>
+    </select>
+    <p>{{status}}</p>
 </section>

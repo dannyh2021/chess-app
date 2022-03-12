@@ -56,6 +56,10 @@ input:focus {
     margin-bottom: 3rem;
 }
 
+#error-message {
+    color: rgb(165, 34, 34);
+}
+
 button {
     display: block;
     color: #fff;

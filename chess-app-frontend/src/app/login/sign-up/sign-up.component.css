@@ -23,7 +23,7 @@ h1 {
 }
 
 .form-group {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 label {
@@ -48,6 +48,11 @@ input {
 input:invalid {
     border:1px solid #c33;
     box-shadow: 0 0 5px #d35353
+}
+
+input.ng-untouched {
+    border: none;
+    box-shadow: none;
 }
 
 input:focus {

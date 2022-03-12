@@ -1,3 +1,15 @@
-<section>
-    <p>controller: to be implemented</p>
+<section class="box">
+    <div class="info">
+        <span>Status: <span id="status"></span></span>
+        <br>
+        <span>
+            <button (click)="onRestart.emit()">Restart</button>
+            <button (click)="onUndo.emit()">Undo</button>
+            <button>dev test</button>
+        </span>
+        <br>
+
+        <p>Move History:</p>
+        <div id="move-history" style="white-space: pre-line">{{moveHistory}}</div>
+    </div>
 </section>

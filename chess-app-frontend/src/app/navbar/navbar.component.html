@@ -19,8 +19,12 @@
         </nav>
     </div>
     <div class="site-buttons">
-        <a href="/profile">Profile</a>
-        <a href="/login">Login</a>
-        <button (click)="test()">test button</button>
+        <section>
+            <a *ngIf="accountService.loggedIn()" href="/profile" id="profile">{{accountService.getUsername()}}'s Profile</a>
+        </section>
+        <section>
+            <button *ngIf="!accountService.loggedIn()"><a href="/login">Login</a></button>
+            <button *ngIf="accountService.loggedIn()"><a href="/" (click)="logOut()">Log Out</a></button>
+        </section>
     </div>
 </header>
