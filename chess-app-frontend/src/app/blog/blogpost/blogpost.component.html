@@ -1,0 +1,13 @@
+<main class="box">
+    <a >
+        <div>
+            <h1>{{post.title}}</h1>
+            <img *ngIf="(post.img)" [src]="post.img">
+            <p>date: {{post.author}}</p>
+            <p>published on {{post.date | date}}</p>
+            <p>Likes: {{post.likes}}</p>
+            <button type="button">Like this post</button>
+            <p>{{post.text}}</p>
+        </div>
+    </a>
+</main>

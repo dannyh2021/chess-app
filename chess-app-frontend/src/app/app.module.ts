@@ -15,7 +15,6 @@ import { MatchInfoComponent } from './game/match-info/match-info.component';
 import { ChatComponent } from './game/chat/chat.component';
 import { ControllerComponent } from './game/controller/controller.component';
 import { BoardComponent } from './game/board/board.component';
-import { BlogsComponent } from './blog/blogs/blogs.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AccountService } from './services/account.service';
@@ -28,6 +27,9 @@ import { NgxChessBoardModule } from 'ngx-chess-board';
 
 import { CookieService } from 'ngx-cookie-service';
 import { ArticleComponent } from './news/article/article.component';
+import { BlogComponent } from './blog/blog/blog.component';
+import { BlogpostComponent } from './blog/blogpost/blogpost.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
   { path: 'play', component: GameComponent },
   { path: 'news', component: NewsComponent },
   { path: 'forum' , component: ForumsComponent },
-  { path: 'blog', component: BlogsComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '', redirectTo:'/play', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
 ];
@@ -55,10 +58,12 @@ const appRoutes: Routes = [
     ChatComponent,
     ControllerComponent,
     BoardComponent,
-    BlogsComponent,
+    BlogComponent,
     ForumsComponent,
     ForumComponent,
-    ArticleComponent
+    ArticleComponent,
+    BlogpostComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

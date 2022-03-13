@@ -9,6 +9,7 @@ import mongoose from 'mongoose';
 import newUserController from './controllers/newUser.js';
 import loginUserController from './controllers/loginUser.js';
 import saveGameController from './controllers/saveGame.js'
+import getGamesController from './controllers/getgames.js'
 
 const __dirname = path.resolve();
 
@@ -25,10 +26,11 @@ app.use(expressSession({
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     // res.header('Access-Control-Allow-Headers', true);
     res.header('Access-Control-Allow-Credentials', true);
     // res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET", true);
+    res.header("Access-Control-Allow-Headers","*");
     next();
 });
 
@@ -54,6 +56,8 @@ app.post('/users/login', loginUserController);
 app.post('/games/save', saveGameController);
 
 // TODO: game get
+
+app.get('/games/get', getGamesController);
 
 // TODO: blog CRUD
 

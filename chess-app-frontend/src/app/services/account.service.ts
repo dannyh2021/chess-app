@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -28,6 +28,7 @@ export class AccountService {
     return this.http.post('http://localhost:3000/games/save', { username, pgn, date: new Date() });
   }
   
+  // only use if logged in
   getUsername(): string {
     if (this.cookieService.check('username')) {
       return this.cookieService.get('username');
@@ -57,5 +58,14 @@ export class AccountService {
   logOut() {
     this.setUsername('Guest');
     this.cookieService.delete('user_id');
+  }
+
+  // get games from database
+  getGames(username: string) {
+    const requestOptions = {
+      headers: new HttpHeaders({ username })
+    }
+
+    return this.http.get('http://localhost:3000/games/get', requestOptions);
   }
 }

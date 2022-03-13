@@ -1,0 +1,5 @@
+<h1>{{username}}</h1>
+<img src="http://images.chesscomfiles.com/uploads/images/noavatar_l.gif">
+<p>Games: </p>
+<button (click)="updateGames()">dev button</button>
+<p *ngFor="let game of games">{{game.username}}, {{game.date | date}}, {{game.pgn}}</p>
