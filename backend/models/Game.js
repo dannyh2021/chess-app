@@ -3,7 +3,7 @@ import { mongoose } from 'mongoose';
 const Schema = mongoose.Schema;
 
 const GameSchema = new Schema({
-    user_id: {
+    username: {
         type: String,
         required: true
     },

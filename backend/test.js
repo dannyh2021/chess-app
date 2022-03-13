@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost/my_database');
 });*/
 
 Game.create({
-    user_id: 'testing_id',
+    username: 'testing_name',
     pgn: 'testing_pgn',
     date: new Date()
 }, (error, game) => {

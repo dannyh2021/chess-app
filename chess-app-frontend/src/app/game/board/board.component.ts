@@ -37,6 +37,6 @@ export class BoardComponent implements OnInit, AfterViewInit {
   }
 
   updateStatus() {
-
+    
   }
 }

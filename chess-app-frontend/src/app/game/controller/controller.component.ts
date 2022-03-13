@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, Output, EventEmitter } from '@angular/core';
-import { AccountService } from 'src/app/account.service';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-controller',

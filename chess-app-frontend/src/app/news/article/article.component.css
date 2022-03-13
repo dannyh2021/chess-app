@@ -1,0 +1,32 @@
+.box {
+    height: auto;
+    width: 800px;
+    padding: 30px;
+    background-color: #607f4c;
+    /* border-color: #404040; */
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #404040;
+    margin: 20px auto;
+}
+
+img {
+    width: 700px;
+}
+
+a {
+    color: #bababa;
+    text-decoration: none;
+}
+
+a h1 {
+    font-weight: bold;
+}
+
+a:hover h1 {
+    text-decoration: underline;
+    color: #3692e7;
+}
+
+p {
+    font-size: large;
+}

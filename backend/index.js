@@ -8,6 +8,7 @@ import mongoose from 'mongoose';
 
 import newUserController from './controllers/newUser.js';
 import loginUserController from './controllers/loginUser.js';
+import saveGameController from './controllers/saveGame.js'
 
 const __dirname = path.resolve();
 
@@ -25,6 +26,9 @@ app.use(expressSession({
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    // res.header('Access-Control-Allow-Headers', true);
+    res.header('Access-Control-Allow-Credentials', true);
+    // res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET", true);
     next();
 });
 
@@ -45,11 +49,23 @@ app.post('/users/register', newUserController);
 
 app.post('/users/login', loginUserController);
 
+// game post
+
+app.post('/games/save', saveGameController);
+
+// TODO: game get
+
 // TODO: blog CRUD
 
 // TODO: forum CRUD
 
 // TODO: news get
+
+app.get('/news/get', (req, res) => {
+    console.log(req);
+    res.status(200).send( { msg: 'success' });
+    // res.status(200).send(req);
+});
 
 // testing get
 app.get('/dev/get', (req, res) => {

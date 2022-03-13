@@ -1,0 +1,14 @@
+<main class="box">
+    <div *ngIf="article">
+        <a [href]="article.link">
+            <div>
+                <h1>{{article.title}}</h1>
+                <img [src]="article.media">
+                <p>by: {{article.author}}</p>
+                <p>published on {{article.published_date | date}}</p>
+                <p>{{article.summary}} ... (click to read more)</p>
+            </div>
+        </a>
+    </div>
+    <p *ngIf="!article">No article loaded into component.</p>
+</main>

@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
-import { AccountService } from 'src/app/account.service';
+import { AccountService } from 'src/app/services/account.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { NavbarComponent } from 'src/app/navbar/navbar.component';

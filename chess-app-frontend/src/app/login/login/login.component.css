@@ -57,7 +57,7 @@ input:focus {
 }
 
 #error-message {
-    color: rgb(165, 34, 34);
+    color: #a52222;
 }
 
 button {

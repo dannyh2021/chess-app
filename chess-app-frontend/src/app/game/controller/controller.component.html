@@ -4,8 +4,8 @@
             <button (click)="onRestart.emit()">Restart</button>
             <button (click)="onUndo.emit()">Undo</button>
             <button *ngIf="accountService.loggedIn()" (click)="onSave.emit()">Save Game</button>
-            <p *ngIf="!accountService.loggedIn()">Please log in if you would like to save your game.</p>
         </span>
+        <p *ngIf="!accountService.loggedIn()">Please log in if you would like to save your game.</p>
         <br>
 
         <p>Move History:</p>

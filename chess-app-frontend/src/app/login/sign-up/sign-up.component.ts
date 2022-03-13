@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { stringify } from 'querystring';
-import { AccountService } from 'src/app/account.service';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-sign-up',

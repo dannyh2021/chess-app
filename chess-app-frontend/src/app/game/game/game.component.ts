@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import * as ChessJS from 'chess.js';
 import { NgxChessBoardComponent } from 'ngx-chess-board';
-import { AccountService } from 'src/app/account.service';
+import { AccountService } from 'src/app/services/account.service';
 import { moveMessagePortToContext } from 'worker_threads';
 import { BoardComponent } from '../board/board.component';
 import { ControllerComponent } from '../controller/controller.component';
@@ -48,11 +48,21 @@ export class GameComponent implements OnInit {
   }
 
   saveGame(): void {
-    if (this.chess.game_over) {
-
+    if (/*this.chess.game_over()*/ this.chess.pgn().length > 0) {
+      this.accountService.saveGame(this.accountService.getUsername(), this.chess.pgn()).subscribe({
+        next: (data: any) => {
+          //console.log(this.cookieService.getAll());
+        }, error: data => {
+          console.log(data.error);
+          // console.error(error);
+        }, complete: () => {
+          // when does this complete run?
+          console.log('accountService login completed');
+        }
+      });
       alert('Game saved');
     } else {
-      alert('Please complete the game to save.');
+      alert('Please make at least one move before saving game.');
     }
   }
 
@@ -67,6 +77,7 @@ export class GameComponent implements OnInit {
           this.makeRandomMove();
         } else if (this.mode === 'AI') {
           this.makeBestMove();
+          console.log('best move made');
         } else {
           console.log('mode not found');
         }
@@ -120,9 +131,9 @@ export class GameComponent implements OnInit {
       alert('Game over')
     }
 
-    let bestMove = this.minimaxRoot(3, this.chess, true);
+    let bestMove = this.minimaxRoot(3, this.chess, false);
 
-    return this.chess.moves()[Math.floor(Math.random() * this.chess.moves().length)];
+    return bestMove;
   }
 
   minimaxRoot(depth: number, game: any, isMaximizingPlayer: boolean): any {
@@ -136,7 +147,7 @@ export class GameComponent implements OnInit {
         game.move(newGameMove);
         var value = this.minimax(depth - 1, game, -9999, 9999, !isMaximizingPlayer)
         movesConsidered.push({'move': newGameMove, 'value': value});
-        // console.log("move: " + JSON.stringify(movesConsidered[i].move) + " " + "value: " + movesConsidered[i].value);
+        console.log("move: " + JSON.stringify(movesConsidered[i].move) + " " + "value: " + movesConsidered[i].value);
         game.undo();
         if ((value >= bestMove && isMaximizingPlayer) ||
             (value <= bestMove && !isMaximizingPlayer)) {

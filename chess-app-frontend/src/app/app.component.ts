@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { EmailValidator } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
-import { AccountService } from './account.service';
+import { AccountService } from './services/account.service';
 import { PasswordResetComponent } from './login/password-reset/password-reset.component';
 import { ChangeDetectorRef } from '@angular/core';
 import { LoginComponent } from './login/login/login.component';
