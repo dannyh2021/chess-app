@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "@chrisoakman/chessboardjs": "^1.0.0",
+    "@kolkov/angular-editor": "^2.0.0",
     "chess.js": "^0.12.1",
     "chessground": "^8.2.0",
     "ngx-chess-board": "^2.2.1",

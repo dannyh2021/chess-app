@@ -30,6 +30,9 @@ import { ArticleComponent } from './news/article/article.component';
 import { BlogComponent } from './blog/blog/blog.component';
 import { BlogpostComponent } from './blog/blogpost/blogpost.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CreateBlogpostComponent } from './blog/create-blogpost/create-blogpost.component';
+
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -39,6 +42,7 @@ const appRoutes: Routes = [
   { path: 'news', component: NewsComponent },
   { path: 'forum' , component: ForumsComponent },
   { path: 'blog', component: BlogComponent },
+  { path: 'blog/create', component: CreateBlogpostComponent },
   { path: 'profile', component: ProfileComponent },
   { path: '', redirectTo:'/play', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
@@ -63,14 +67,16 @@ const appRoutes: Routes = [
     ForumComponent,
     ArticleComponent,
     BlogpostComponent,
-    ProfileComponent
+    ProfileComponent,
+    CreateBlogpostComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    NgxChessBoardModule.forRoot()
+    NgxChessBoardModule.forRoot(),
+    AngularEditorModule
   ],
   providers: [AccountService, CookieService],
   bootstrap: [AppComponent]
