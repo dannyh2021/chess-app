@@ -15,7 +15,6 @@ export class AccountService {
     private router: Router,
     private http: HttpClient,
     private cookieService: CookieService) {
-      console.log('constructor account service');
       // this.userSubject = new BehaviorSubject<string>(JSON.parse(localStorage.getItem('user_id') || '{}'));
       // this.username = this.userSubject.asObservable();
   }
@@ -25,7 +24,7 @@ export class AccountService {
   } */
 
   saveGame(username: string, pgn: string) {
-    return this.http.post('http://localhost:3000/games/save', { username, pgn, date: new Date() });
+    return this.http.post('/games/save', { username, pgn, date: new Date() });
   }
   
   // returns 'Guest' if not logged in
@@ -42,13 +41,13 @@ export class AccountService {
   }
   
   login(username_email: string, password: string) {
-    return this.http.post('http://localhost:3000/users/login', { username_email, password });
+    return this.http.post('/users/login', { username_email, password });
   }
 
   register(username: string, email: string, password: string) {
     const body = {username, email, password};
     console.log('registering: ', body);
-    return this.http.post('http://localhost:3000/users/register', body);
+    return this.http.post('/users/register', body);
   }
 
   setUsername(username: string) {
@@ -66,30 +65,31 @@ export class AccountService {
       headers: new HttpHeaders({ username })
     }
 
-    return this.http.get('http://localhost:3000/games/get', requestOptions);
+    return this.http.get('/games/get', requestOptions);
   }
 
+  // blogging service
   createBlogPost(title: string, author: string, date: Date, pgn: string, text: string) {
-    return this.http.post('http://localhost:3000/blog/post', {title, author, date, pgn, text});
+    return this.http.post('/blog/post', {title, author, date, pgn, text});
   }
 
   getBlog() {
-    return this.http.get('http://localhost:3000/blog/get');
+    return this.http.get('/blog/get');
   }
 
   deleteBlog(blog_id: string) {
-    return this.http.post('http://localhost:3000/blog/delete', { _id: blog_id });
+    return this.http.post('/blog/delete', { _id: blog_id });
   }
 
   getLikes() {
-    return this.http.get('http://localhost:3000/blog/likes/get');
+    return this.http.get('/blog/likes/get');
   }
 
   likePost(username: string, post_id: string) {
-    return this.http.post('http://localhost:3000/blog/like', {username, post_id});
+    return this.http.post('/blog/like', {username, post_id});
   }
 
   unlikePost(like_id: string) {
-    return this.http.post('http://localhost:3000/blog/unlike', { _id: like_id });
+    return this.http.post('/blog/unlike', { _id: like_id });
   }
 }

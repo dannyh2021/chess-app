@@ -23,7 +23,8 @@ import unlikePostController from './controllers/unlikePostController.js';
 const __dirname = path.resolve();
 
 // connect to MongoDB
-mongoose.connect('mongodb://localhost/my_database');
+// mongoose.connect('mongodb://localhost/my_database');
+mongoose.connect('mongodb+srv://danny:danny@cluster0.zrp4g.mongodb.net/chess_database', {useNewUrlParser: true});
 
 // set middleware
 const app = express();

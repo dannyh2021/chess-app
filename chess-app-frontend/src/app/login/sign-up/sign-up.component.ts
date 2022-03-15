@@ -25,16 +25,13 @@ export class SignUpComponent implements OnInit {
       .subscribe({
         next: (data: any) => {
           this.message = 'Successful registration';
-          console.log(data.msg);
+          // console.log(data.msg);
           this.router.navigate(['/login']);
         },
         error: data => {
-          // console.log("error:");
-          // console.error(data);
           this.message = "Unsuccessful registration. Please try again.\nError message:"
           this.message += data.error.message;
-          /*console.log('msg:', data.error.msg); */
-          console.log(data);
+          console.log(data.error.message);
         },
         complete: () => {
         }

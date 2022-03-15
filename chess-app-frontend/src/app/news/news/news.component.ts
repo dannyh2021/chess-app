@@ -17,25 +17,6 @@ export class NewsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  test(): void {
-    console.log(this.articles);
-    console.log(this.articles[0]);
-    
-    /*this.newsService.getNews().subscribe({
-      next: (data: any) => {
-        console.log('woah, got something');
-        console.log(data);
-      },
-      error: data => {
-        console.log('error');
-        console.log(data);
-      },
-      complete: () => {
-        console.log('end of request');
-      }
-    });*/
-  }
-
   prev(): void {
     if(this.page > 0) {
       this.page--;
@@ -51,15 +32,15 @@ export class NewsComponent implements OnInit {
   getNews(): void {
     this.newsService.getNews(this.page).subscribe({
       next: (data: any) => {
-        console.log('woah, got something');
-        console.log(data);
+        // console.log('woah, got something');
+        // console.log(data);
         this.articles = data.articles;
       },
       error: data => {
         console.log('error', data);
       },
       complete: () => {
-        console.log('end of request');
+        // console.log('end of request');
       }
     });
   }

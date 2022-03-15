@@ -54,15 +54,11 @@ export class CreateBlogpostComponent implements OnInit {
   updateGames(): void {
     this.accountService.getGames(this.accountService.getUsername()).subscribe({
       next: (data: any) => {
-        console.log('wow it worked');
-        console.log(data);
         this.games = data.games;
       }, error: data => {
         console.log('error:', data.error);
         // console.error(error);
       }, complete: () => {
-        // when does this complete run?
-        console.log('accountService login completed');
       }
     });
   }
@@ -81,13 +77,10 @@ export class CreateBlogpostComponent implements OnInit {
 
       this.accountService.createBlogPost(post.title, post.author, post.date, post.pgn, post.text).subscribe({
         next: (data: any) => {
-          console.log(data);
+          // console.log(data);
           this.router.navigate(['/blog']);
-          //console.log(this.cookieService.getAll());
-          // this.router.navigate(['/']);
         }, error: data => {
           console.log('error: ', data.error);
-          // console.error(error);
         }
       });
     }

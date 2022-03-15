@@ -63,7 +63,7 @@ export class GameVisualizerComponent implements OnInit, AfterViewInit {
 
   setMoveHistory(moves: any): void {
     let temp = moves.length % 2 === 0 ? moves.length : moves.length - 1;
-    console.log(temp);
+    // console.log(temp);
 
     let text = '<div style="overflow:scroll; height:300px;">';
     for (let i = 0; i < temp; i += 2) {

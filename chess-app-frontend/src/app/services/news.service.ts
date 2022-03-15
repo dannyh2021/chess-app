@@ -11,7 +11,7 @@ export class NewsService {
 
   getNews(page = 1) {
     // use your own API key if you're looking at this code
-    console.log(config);
+    // console.log(config);
     const headersDict = {
       // "x-rapid-api-host": "free-news.p.rapidapi.com",
       "X-RapidAPI-Key": config.RAPID_API_KEY

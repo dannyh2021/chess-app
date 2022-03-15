@@ -14,7 +14,6 @@ import { GameComponent } from './game/game/game.component';
 import { MatchInfoComponent } from './game/match-info/match-info.component';
 import { ChatComponent } from './game/chat/chat.component';
 import { ControllerComponent } from './game/controller/controller.component';
-import { BoardComponent } from './game/board/board.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { AccountService } from './services/account.service';
@@ -59,7 +58,6 @@ const appRoutes: Routes = [
     MatchInfoComponent,
     ChatComponent,
     ControllerComponent,
-    BoardComponent,
     BlogComponent,
     ArticleComponent,
     BlogpostComponent,

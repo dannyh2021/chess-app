@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log('login button pressed.');
     this.accountService.login(this.username, this.password).subscribe({
       next: (data: any) => {
         //console.log(data.user_id);
@@ -34,15 +33,13 @@ export class LoginComponent implements OnInit {
         //console.log(this.cookieService.getAll());
         this.router.navigate(['/']);
       }, error: data => {
-        console.log('test');
         this.message = "Login unsuccessful: " + data.error.msg;
         console.log(data.error);
         // console.error(error);
       }, complete: () => {
         // when does this complete run?
-        console.log('accountService login completed');
+        // console.log('accountService login completed');
       }
     });
-    console.log('end of login() function.');
   }
 }

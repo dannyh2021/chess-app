@@ -15,7 +15,7 @@ export class MatchInfoComponent implements OnInit {
   }
 
   onModeChange() {
-    console.log('mode change event fired');
+    // console.log('mode change event fired');
     this.modeChange.emit('Hello');
   }
 }

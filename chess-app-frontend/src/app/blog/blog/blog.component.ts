@@ -20,7 +20,7 @@ export class BlogComponent implements OnInit {
   getBlogPosts() {
     this.accountService.getBlog().subscribe({
       next: (data: any) => {
-        console.log(data);
+        //console.log(data);
         this.blogposts = data;
         //console.log(this.cookieService.getAll());
         // this.router.navigate(['/']);

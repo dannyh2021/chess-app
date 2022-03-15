@@ -32,7 +32,7 @@ export class BlogpostComponent implements OnInit {
   deletePost(): void {
     this.accountService.deleteBlog(this.post._id).subscribe({
       next: (data: any) => {
-        console.log('successfully deleted post, ', data);
+        //console.log('successfully deleted post, ', data);
         this.postChange.emit();
       },
       error: data => {
@@ -42,16 +42,13 @@ export class BlogpostComponent implements OnInit {
   }
 
   likePost(): void {
-    console.log('hello?');
-    console.log(this.accountService.getUsername());
-    console.log(this.post._id);
     this.accountService.likePost(this.accountService.getUsername(), this.post._id).subscribe({
       next: (data: any) => {
-        console.log('liked');
+        // console.log('liked');
       }, error: data => {
         console.log('error: ',data.error);
       }, complete: () => {
-        console.log('likePost completed');
+        // console.log('likePost completed');
         this.getPostLikes();
       }
     });
@@ -71,11 +68,11 @@ export class BlogpostComponent implements OnInit {
 
       this.accountService.unlikePost(like_id).subscribe({
         next: (data: any) => {
-          console.log('unliked');
+          // console.log('unliked');
         }, error: data => {
           console.log('error: ',data.error);
         }, complete: () => {
-          console.log('unlikePost completed');
+          // console.log('unlikePost completed');
           this.getPostLikes();
         }
       });
@@ -83,7 +80,6 @@ export class BlogpostComponent implements OnInit {
   }
 
   getPostLikes() {
-    console.log('hi');
     this.accountService.getLikes().subscribe({
       next: (data: any) => {
         this.likes = [];
@@ -95,7 +91,7 @@ export class BlogpostComponent implements OnInit {
       }, error: data => {
         console.log('likes error: ', data);
       }, complete: () => {
-        console.log('likes: ', this.likes.length);
+        // console.log('likes: ', this.likes.length);
       }
     });
   }

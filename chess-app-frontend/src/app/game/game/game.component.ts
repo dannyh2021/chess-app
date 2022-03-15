@@ -38,7 +38,7 @@ export class GameComponent implements OnInit {
     console.log(this.chess.pgn());
     this.updateMoveHistory();
     this.updateBoard();
-    console.log('board: ', this.board.getPGN());
+    // console.log('board: ', this.board.getPGN());
   }
 
   resetGame(): void {
@@ -54,10 +54,8 @@ export class GameComponent implements OnInit {
           //console.log(this.cookieService.getAll());
         }, error: data => {
           console.log(data.error);
-          // console.error(error);
         }, complete: () => {
           // when does this complete run?
-          console.log('accountService login completed');
         }
       });
       alert('Game saved');
@@ -77,9 +75,9 @@ export class GameComponent implements OnInit {
           this.makeRandomMove();
         } else if (this.mode === 'AI') {
           this.makeBestMove();
-          console.log('best move made');
+          // console.log('best move made');
         } else {
-          console.log('mode not found');
+          // console.log('mode not found');
         }
       }
     }

@@ -24,15 +24,13 @@ export class ProfileComponent implements OnInit {
   updateGames(): void {
     this.accountService.getGames(this.username).subscribe({
       next: (data: any) => {
-        console.log('wow it worked');
-        console.log(data);
+        // console.log(data);
         this.games = data.games;
       }, error: data => {
         console.log('error:', data.error);
-        // console.error(error);
       }, complete: () => {
         // when does this complete run?
-        console.log('accountService login completed');
+        // console.log('accountService login completed');
       }
     });
   }
