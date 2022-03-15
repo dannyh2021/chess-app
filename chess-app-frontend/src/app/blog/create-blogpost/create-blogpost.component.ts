@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { AccountService } from 'src/app/services/account.service';
@@ -21,7 +21,7 @@ export class CreateBlogpostComponent implements OnInit {
       translate: 'yes',
       enableToolbar: true,
       showToolbar: true,
-      placeholder: 'Enter text here...',
+      placeholder: 'Enter o-o text here...',
       defaultParagraphSeparator: '',
       defaultFontName: 'Inconsolata',
       defaultFontSize: '12',
@@ -67,8 +67,27 @@ export class CreateBlogpostComponent implements OnInit {
   }
   
   createPost(f: NgForm): void {
-    console.log('hi');
-    console.log(f.value);
-    console.log(this.text);
+    if (!f.value.title || !f.value.text) {
+      alert('Title and body cannot be empty.');
+    } else {
+      const post = {
+        title: f.value.title,
+        author: this.accountService.getUsername(),
+        date: new Date(),
+        pgn: f.value.game,
+        text: f.value.text
+      };
+
+      this.accountService.createBlogPost(post.title, post.author, post.date, post.pgn, post.text).subscribe({
+        next: (data: any) => {
+          console.log(data);
+          //console.log(this.cookieService.getAll());
+          // this.router.navigate(['/']);
+        }, error: data => {
+          console.log('error: ', data.error);
+          // console.error(error);
+        }
+      });
+    }
   }
 }

@@ -68,4 +68,28 @@ export class AccountService {
 
     return this.http.get('http://localhost:3000/games/get', requestOptions);
   }
+
+  createBlogPost(title: string, author: string, date: Date, pgn: string, text: string) {
+    return this.http.post('http://localhost:3000/blog/post', {title, author, date, pgn, text});
+  }
+
+  getBlog() {
+    return this.http.get('http://localhost:3000/blog/get');
+  }
+
+  deleteBlog(blog_id: string) {
+    return this.http.post('http://localhost:3000/blog/delete', { _id: blog_id });
+  }
+
+  getLikes() {
+    // todo
+  }
+
+  likePost() {
+    // todo
+  }
+
+  unlikePost() {
+    // todo
+  }
 }

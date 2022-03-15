@@ -2,12 +2,17 @@
     <a >
         <div>
             <h1>{{post.title}}</h1>
-            <img *ngIf="(post.img)" [src]="post.img">
-            <p>date: {{post.author}}</p>
-            <p>published on {{post.date | date}}</p>
-            <p>Likes: {{post.likes}}</p>
-            <button type="button">Like this post</button>
-            <p>{{post.text}}</p>
+            <app-game-visualizer *ngIf="post.pgn"
+                [pgn]="post.pgn"
+            ></app-game-visualizer>
+            <p>by {{post.author}}</p>
+            <p>Created on {{post.date | date}}</p>
+            <div class="horizontal-container">
+                <p>Likes: {{post.likes}}</p>
+                <button type="button">Like</button>
+            </div>
+            <p id="text" [innerHTML]="post.text"></p>
+            <span *ngIf="canDelete()"><button (click)="deletePost()">Delete this post</button></span>
         </div>
     </a>
 </main>

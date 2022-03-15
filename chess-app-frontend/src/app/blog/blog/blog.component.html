@@ -4,6 +4,9 @@
         <p *ngIf="!accountService.loggedIn()">Please log in if you would like to create a post.</p>
         <button *ngIf="accountService.loggedIn()"><a href="/blog/create">Create post</a></button>
     </div>
-    <app-blogpost></app-blogpost>
+    <app-blogpost *ngFor="let blogpost of blogposts"
+        [post]="blogpost"
+        (postChange)="getBlogPosts()"
+    ></app-blogpost>
     <app-blogpost></app-blogpost>
 </div>

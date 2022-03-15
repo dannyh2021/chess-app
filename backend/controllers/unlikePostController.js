@@ -1,9 +1,10 @@
-import { BlogPost } from "../models/BlogPost.js";
+import { Like } from '../models/Like.js'
 
 export default (req, res) => {
     console.log('req.body: ', req.body);
 
-    BlogPost.deleteOne({ _id: req.body._id }, function(error) {
+    // delete like based on _id
+    Like.deleteOne({ _id: req.body._id }, function(error) {
         if (!error) {
             res.status(200).send({ msg: 'success' });
         }

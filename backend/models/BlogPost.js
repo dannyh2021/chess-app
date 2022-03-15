@@ -5,19 +5,16 @@ const Schema = mongoose.Schema;
 const BlogPostSchema = new Schema({
     title: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     author: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     date: {
         type: Date,
         required: true
     },
-    img: String,
     pgn: String,
     text: {
         type: String,

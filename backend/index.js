@@ -13,8 +13,11 @@ import getGamesController from './controllers/getgames.js'
 
 import postBlogController from './controllers/postBlogController.js';
 import getBlogController from './controllers/getBlogController.js';
-import updateBlogController from './controllers/updateBlogController.js';
+// import updateBlogController from './controllers/updateBlogController.js';
 import deleteBlogController from './controllers/deleteBlogController.js';
+
+import likePostController from './controllers/likePostController.js';
+import unlikePostController from './controllers/unlikePostController.js';
 
 const __dirname = path.resolve();
 
@@ -62,15 +65,21 @@ app.post('/games/save', saveGameController);
 
 app.get('/games/get', getGamesController);
 
-// TODO: blog CRUD
+// blog CRUD
 
 app.post('/blog/post', postBlogController);
 
-app.post('/blog/get', getBlogController);
+app.get('/blog/get', getBlogController);
 
-app.post('/blog/update', updateBlogController)
+// app.post('/blog/update', updateBlogController)
 
 app.post('/blog/delete', deleteBlogController);
+
+// like and unlike post
+
+app.post('blog/like', likePostController);
+
+app.post('blog/unlike', unlikePostController);
 
 // testing get
 app.get('/dev/get', (req, res) => {
