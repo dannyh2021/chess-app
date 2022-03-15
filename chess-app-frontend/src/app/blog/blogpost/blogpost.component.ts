@@ -15,9 +15,12 @@ export class BlogpostComponent implements OnInit {
     pgn: '1. e4 Nf6 2. d4 Nxe4 3. c4 Nc6 4. d5 Nb4 5. c5 Nxc5 6. a3 Nbd3+ 7. Bxd3 e6 8. b4 Qf6 9. dxe6 Nxd3+ 10. Qxd3 Qxa1',
     text: '<em>testing</em>'
   };
+  likes: any[] = [];
   @Output() postChange: EventEmitter<null> = new EventEmitter<null>();
 
-  constructor(private accountService: AccountService) { }
+  constructor(public accountService: AccountService) {
+    this.getPostLikes();
+  }
 
   ngOnInit(): void {
   }
@@ -36,5 +39,69 @@ export class BlogpostComponent implements OnInit {
         console.log('error: ', data.error);
       }
     });
+  }
+
+  likePost(): void {
+    console.log('hello?');
+    console.log(this.accountService.getUsername());
+    console.log(this.post._id);
+    this.accountService.likePost(this.accountService.getUsername(), this.post._id).subscribe({
+      next: (data: any) => {
+        console.log('liked');
+      }, error: data => {
+        console.log('error: ',data.error);
+      }, complete: () => {
+        console.log('likePost completed');
+        this.getPostLikes();
+      }
+    });
+  }
+
+  unlikePost(): void {
+    if(!this.liked()) {
+      alert('you have not liked this post');
+    } else {
+      let like_id = '';
+      for (let i = 0; i < this.likes.length; i++) {
+        if (this.likes[i]['username'] === this.accountService.getUsername()) {
+          like_id = this.likes[i]['_id'];
+          break;
+        }
+      }
+
+      this.accountService.unlikePost(like_id).subscribe({
+        next: (data: any) => {
+          console.log('unliked');
+        }, error: data => {
+          console.log('error: ',data.error);
+        }, complete: () => {
+          console.log('unlikePost completed');
+          this.getPostLikes();
+        }
+      });
+    }
+  }
+
+  getPostLikes() {
+    console.log('hi');
+    this.accountService.getLikes().subscribe({
+      next: (data: any) => {
+        this.likes = [];
+        for (let i = 0; i < data.length; i++) {
+          if (this.post._id === data[i]['post_id']) {
+            this.likes.push(data[i]);
+          }
+        }
+      }, error: data => {
+        console.log('likes error: ', data);
+      }, complete: () => {
+        console.log('likes: ', this.likes.length);
+      }
+    });
+  }
+
+  // checks if the user already liked the post
+  liked(): boolean {
+    return this.likes.some(like => like.username === this.accountService.getUsername());
   }
 }

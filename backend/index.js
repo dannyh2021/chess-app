@@ -16,6 +16,7 @@ import getBlogController from './controllers/getBlogController.js';
 // import updateBlogController from './controllers/updateBlogController.js';
 import deleteBlogController from './controllers/deleteBlogController.js';
 
+import getLikesController from './controllers/getLikesController.js';
 import likePostController from './controllers/likePostController.js';
 import unlikePostController from './controllers/unlikePostController.js';
 
@@ -77,9 +78,11 @@ app.post('/blog/delete', deleteBlogController);
 
 // like and unlike post
 
-app.post('blog/like', likePostController);
+app.get('/blog/likes/get', getLikesController);
 
-app.post('blog/unlike', unlikePostController);
+app.post('/blog/like', likePostController);
+
+app.post('/blog/unlike', unlikePostController);
 
 // testing get
 app.get('/dev/get', (req, res) => {

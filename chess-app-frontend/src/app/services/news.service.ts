@@ -9,7 +9,7 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  getNews() {
+  getNews(page = 1) {
     // use your own API key if you're looking at this code
     console.log(config);
     const headersDict = {
@@ -21,6 +21,8 @@ export class NewsService {
     }
     console.log('requestOptions: ', requestOptions);
     let url = 'https://free-news.p.rapidapi.com/v1/search?q=chess&lang=en';
+    url += '&page=' + page;
+
     return this.http.get(url, requestOptions);
   }
 }

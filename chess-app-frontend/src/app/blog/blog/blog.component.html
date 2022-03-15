@@ -1,4 +1,4 @@
-<div>
+<main>
     <h1>Blog Posts</h1>
     <div id="create">
         <p *ngIf="!accountService.loggedIn()">Please log in if you would like to create a post.</p>
@@ -8,5 +8,4 @@
         [post]="blogpost"
         (postChange)="getBlogPosts()"
     ></app-blogpost>
-    <app-blogpost></app-blogpost>
-</div>
+</main>

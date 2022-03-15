@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { AccountService } from 'src/app/services/account.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-blogpost',
@@ -43,7 +44,7 @@ export class CreateBlogpostComponent implements OnInit {
   games: any = {};
   text: string = 'hi';
 
-  constructor(private accountService: AccountService) {
+  constructor(private accountService: AccountService, private router: Router) {
     this.updateGames();
   }
 
@@ -81,6 +82,7 @@ export class CreateBlogpostComponent implements OnInit {
       this.accountService.createBlogPost(post.title, post.author, post.date, post.pgn, post.text).subscribe({
         next: (data: any) => {
           console.log(data);
+          this.router.navigate(['/blog']);
           //console.log(this.cookieService.getAll());
           // this.router.navigate(['/']);
         }, error: data => {

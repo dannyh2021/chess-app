@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { stringify } from 'querystring';
 import { AccountService } from 'src/app/services/account.service';
 
@@ -13,7 +14,7 @@ export class SignUpComponent implements OnInit {
   password: string = '';
   message: string = '';
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -25,6 +26,7 @@ export class SignUpComponent implements OnInit {
         next: (data: any) => {
           this.message = 'Successful registration';
           console.log(data.msg);
+          this.router.navigate(['/login']);
         },
         error: data => {
           // console.log("error:");
@@ -32,7 +34,7 @@ export class SignUpComponent implements OnInit {
           this.message = "Unsuccessful registration. Please try again.\nError message:"
           this.message += data.error.message;
           /*console.log('msg:', data.error.msg); */
-          console.log(data.error);
+          console.log(data);
         },
         complete: () => {
         }

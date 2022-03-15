@@ -1,18 +1,20 @@
-<main class="box">
-    <a >
-        <div>
-            <h1>{{post.title}}</h1>
+<div class="box">
+    <main>
+        <h1>{{post.title}}</h1>
+        <div class="horizontal-center">
             <app-game-visualizer *ngIf="post.pgn"
-                [pgn]="post.pgn"
-            ></app-game-visualizer>
-            <p>by {{post.author}}</p>
-            <p>Created on {{post.date | date}}</p>
-            <div class="horizontal-container">
-                <p>Likes: {{post.likes}}</p>
-                <button type="button">Like</button>
-            </div>
-            <p id="text" [innerHTML]="post.text"></p>
-            <span *ngIf="canDelete()"><button (click)="deletePost()">Delete this post</button></span>
+            [pgn]="post.pgn"
+        ></app-game-visualizer>
         </div>
-    </a>
-</main>
+        <p>by {{post.author}}</p>
+        <p>created on {{post.date | date: 'medium'}}</p>
+        <div class="horizontal-container">
+            <p>Likes: {{likes.length}}</p>
+            <p *ngIf="!accountService.loggedIn()" style="margin-left: 20px;"><em>Please log in to like this post.</em></p>
+            <button *ngIf="accountService.loggedIn() && !liked()" type="button" (click)="likePost()">Like</button>
+            <button *ngIf="accountService.loggedIn() && liked()" type="button" (click)="unlikePost()">Unlike</button>
+        </div>
+        <p id="text" [innerHTML]="post.text"></p>
+        <span *ngIf="canDelete()"><button (click)="deletePost()">Delete this post</button></span>
+    </main>
+</div>

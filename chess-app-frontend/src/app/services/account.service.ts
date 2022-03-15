@@ -56,7 +56,7 @@ export class AccountService {
   }
 
   logOut() {
-    this.setUsername('Guest');
+    this.cookieService.delete('username');
     this.cookieService.delete('user_id');
   }
 
@@ -82,14 +82,14 @@ export class AccountService {
   }
 
   getLikes() {
-    // todo
+    return this.http.get('http://localhost:3000/blog/likes/get');
   }
 
-  likePost() {
-    // todo
+  likePost(username: string, post_id: string) {
+    return this.http.post('http://localhost:3000/blog/like', {username, post_id});
   }
 
-  unlikePost() {
-    // todo
+  unlikePost(like_id: string) {
+    return this.http.post('http://localhost:3000/blog/unlike', { _id: like_id });
   }
 }

@@ -19,10 +19,6 @@ import { BoardComponent } from './game/board/board.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AccountService } from './services/account.service';
 
-import { FormsModule } from '@angular/forms';
-import { ForumsComponent } from './forums/forums/forums.component';
-import { ForumComponent } from './forums/forum/forum.component';
-
 import { NgxChessBoardModule } from 'ngx-chess-board';
 
 import { CookieService } from 'ngx-cookie-service';
@@ -35,13 +31,14 @@ import { CreateBlogpostComponent } from './blog/create-blogpost/create-blogpost.
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { GameVisualizerComponent } from './game-visualizer/game-visualizer.component';
 
+import { FormsModule } from '@angular/forms';
+
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'password-reset', component: PasswordResetComponent },
   { path: 'play', component: GameComponent },
   { path: 'news', component: NewsComponent },
-  { path: 'forum' , component: ForumsComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'blog/create', component: CreateBlogpostComponent },
   { path: 'profile', component: ProfileComponent },
@@ -64,8 +61,6 @@ const appRoutes: Routes = [
     ControllerComponent,
     BoardComponent,
     BlogComponent,
-    ForumsComponent,
-    ForumComponent,
     ArticleComponent,
     BlogpostComponent,
     ProfileComponent,

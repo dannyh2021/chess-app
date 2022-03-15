@@ -9,7 +9,10 @@ const LikeSchema = new Schema({
     },
     post_id: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     }
 });
+
+const Like = mongoose.model('Like', LikeSchema);
+
+export { Like };

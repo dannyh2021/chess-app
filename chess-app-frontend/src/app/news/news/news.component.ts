@@ -8,21 +8,10 @@ import { NewsService } from '../../services/news.service';
 })
 export class NewsComponent implements OnInit {
   articles: any;
+  page: number = 1;
 
   constructor(private newsService: NewsService) {
-    this.newsService.getNews().subscribe({
-      next: (data: any) => {
-        console.log('woah, got something');
-        console.log(data);
-        this.articles = data.articles;
-      },
-      error: data => {
-        console.log('error', data);
-      },
-      complete: () => {
-        console.log('end of request');
-      }
-    });
+    this.getNews();
   }
 
   ngOnInit(): void {
@@ -45,5 +34,33 @@ export class NewsComponent implements OnInit {
         console.log('end of request');
       }
     });*/
+  }
+
+  prev(): void {
+    if(this.page > 0) {
+      this.page--;
+      this.getNews();
+    }
+  }
+
+  next(): void {
+    this.page++;
+    this.getNews();
+  }
+
+  getNews(): void {
+    this.newsService.getNews(this.page).subscribe({
+      next: (data: any) => {
+        console.log('woah, got something');
+        console.log(data);
+        this.articles = data.articles;
+      },
+      error: data => {
+        console.log('error', data);
+      },
+      complete: () => {
+        console.log('end of request');
+      }
+    });
   }
 }

@@ -8,6 +8,7 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class BlogComponent implements OnInit {
   blogposts: any = [];
+  likes: any = [];
 
   constructor(public accountService: AccountService) {
     this.getBlogPosts();
@@ -28,7 +29,6 @@ export class BlogComponent implements OnInit {
           if(a.title > b.title) { return 1; }
           return 0;
         });
-        console.log(this.blogposts);
       }, error: data => {
         console.log('error: ', data.error);
         // console.error(error);
@@ -40,9 +40,5 @@ export class BlogComponent implements OnInit {
         this.blogposts.reverse();
       }
     });
-  }
-
-  deleteBlogPost() {
-
   }
 }

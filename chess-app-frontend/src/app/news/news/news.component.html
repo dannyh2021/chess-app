@@ -1,3 +1,15 @@
-<p>news works!</p>
-<button (click)="test()">dev test</button>
-<app-article *ngFor="let article of articles" [article]="article"></app-article>
+<main>
+    <h1>Recent Chess News</h1>
+    <span>
+        <button *ngIf="page > 1" (click)="prev()">prev</button>
+        <p>Page {{page}}</p>
+        <button (click)="next()">next</button>
+    </span>
+    <p><em>Articles are generated using the Newscatcher API. There is a request limit of 1 request per second.</em></p>
+    <app-article *ngFor="let article of articles" [article]="article"></app-article>
+    <span>
+        <button *ngIf="page > 1" (click)="prev()">prev</button>
+        <p>Page {{page}}</p>
+        <button (click)="next()">next</button>
+    </span>
+</main>

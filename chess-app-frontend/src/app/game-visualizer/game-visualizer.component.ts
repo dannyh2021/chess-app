@@ -19,14 +19,12 @@ export class GameVisualizerComponent implements OnInit, AfterViewInit {
 
   constructor() {
     this.chess = new Chess();
-    // this.chess.load_pgn(this.pgn);
-    const temp = new Chess()
-    temp.load_pgn(this.pgn);
-    this.allMoves = temp.history();
   }
 
   ngOnInit(): void {
-    
+    const temp = new Chess()
+    temp.load_pgn(this.pgn);
+    this.allMoves = temp.history();
   }
 
   ngAfterViewInit(): void {
