@@ -1,7 +1,24 @@
 <div class="box">
     <h1>Create BlogPost</h1>
-    <p>Title: </p>
-    <angular-editor
-    [config]="editorConfig"
-    ></angular-editor>
+    <form method="post" (ngSubmit)="createPost(form)" #form="ngForm" enctype="multipart/form-data">
+        <div class="horizontal-container">
+            <label >Title:</label>
+            <input name="title" ngModel required id="title-input">
+        </div>
+        <div class="horizontal-container">
+            <label>Game (optional):</label>
+            <select name="game" ngModel>
+                <option value="" selected>none</option>
+                <option value="{{game.pgn}}" *ngFor="let game of games">{{game.username}}, {{game.date | date: 'medium'}}, pgn: {{game.pgn | slice:0:20}}...</option>
+            </select>
+        </div>
+        <div class="editor">
+            <angular-editor
+                [config]="editorConfig"
+                name="text"
+                [(ngModel)]="form.name"
+            ></angular-editor>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
 </div>

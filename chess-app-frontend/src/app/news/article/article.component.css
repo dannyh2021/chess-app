@@ -9,6 +9,12 @@
     margin: 20px auto;
 }
 
+.center {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
 img {
     width: 700px;
 }

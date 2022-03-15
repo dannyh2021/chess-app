@@ -28,7 +28,7 @@ export class AccountService {
     return this.http.post('http://localhost:3000/games/save', { username, pgn, date: new Date() });
   }
   
-  // only use if logged in
+  // returns 'Guest' if not logged in
   getUsername(): string {
     if (this.cookieService.check('username')) {
       return this.cookieService.get('username');

@@ -9,3 +9,7 @@ div {
 #spacer {
     height: 100px;
 }
+
+ngx-chess-board {
+    margin-top: 20px;
+}

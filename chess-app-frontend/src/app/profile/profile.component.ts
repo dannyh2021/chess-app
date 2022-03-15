@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
     this.username = this.accountService.getUsername();
 
     // fetch games
+    this.updateGames();
   }
 
   ngOnInit(): void {

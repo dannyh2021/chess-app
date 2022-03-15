@@ -17,10 +17,6 @@ const BlogPostSchema = new Schema({
         type: Date,
         required: true
     },
-    likes: {
-        type: Number,
-        required: true
-    },
     img: String,
     pgn: String,
     text: {
@@ -29,6 +25,6 @@ const BlogPostSchema = new Schema({
     }
 });
 
-const BlogPost = mongoose.model('BlogPost', GameSchema);
+const BlogPost = mongoose.model('BlogPost', BlogPostSchema);
 
 export { BlogPost };

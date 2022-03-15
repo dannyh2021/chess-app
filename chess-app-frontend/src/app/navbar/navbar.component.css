@@ -1,6 +1,8 @@
 header {
     display: flex;
     justify-content: space-between;
+    background-color: #557043;
+    /* background: linear-gradient(to bottom, #3a4c2d, #3a4c2d 100%); */
 }
 
 /*nav {
@@ -82,12 +84,12 @@ header {
     display: block;
 }
 
-#profile {
+.profile {
     margin-top: 1rem;
     padding-left: 0.2rem;
 }
 
-#profile:hover {
+.profile:hover {
     color: lightgreen;
     border-left: solid 5px lightgreen;
 }
@@ -105,5 +107,5 @@ header {
 }
 
 .site-buttons button:hover {
-    background-color: #557043;
+    background-color: #485e39;
 }

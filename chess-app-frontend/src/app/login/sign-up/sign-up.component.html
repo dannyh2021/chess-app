@@ -2,7 +2,7 @@
     <main class="box">
         <h1>Register</h1>
         <!-- <form method="post" id="signup-form" action="http://localhost:3000/users/register"> -->
-        <form method="post" id="signup-form" (ngSubmit)='signUp()' #form="ngForm">
+        <form method="post" id="signup-form" (ngSubmit)="signUp()" #form="ngForm">
             <div class="form-group">
                 <label>Username</label>
                 <input name="username" required minlength="1" maxlength="20" #nameInput="ngModel"

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { AccountService } from 'src/app/services/account.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-create-blogpost',
@@ -24,26 +27,7 @@ export class CreateBlogpostComponent implements OnInit {
       defaultFontSize: '12',
       fonts: [
         {class: 'Inconsolata', name: 'Inconsolata' },
-        {class: 'arial', name: 'Arial'},
-        {class: 'times-new-roman', name: 'Times New Roman'},
-        {class: 'calibri', name: 'Calibri'},
-        {class: 'comic-sans-ms', name: 'Comic Sans MS'}
       ],
-      /*customClasses: [
-      {
-        name: 'quote',
-        class: 'quote',
-      },
-      {
-        name: 'redText',
-        class: 'redText'
-      },
-      {
-        name: 'titleText',
-        class: 'titleText',
-        tag: 'h1',
-      },
-    ],*/
     uploadUrl: 'v1/image',
     uploadWithCredentials: false,
     sanitize: true,
@@ -56,9 +40,35 @@ export class CreateBlogpostComponent implements OnInit {
       ['link', 'unlink', 'insertImage', 'insertVideo', 'insertHorizontalRule', 'removeFormat', 'toggleEditorMode']
     ]
   };
+  games: any = {};
+  text: string = 'hi';
 
-  constructor() { }
+  constructor(private accountService: AccountService) {
+    this.updateGames();
+  }
 
   ngOnInit(): void {
+  }
+
+  updateGames(): void {
+    this.accountService.getGames(this.accountService.getUsername()).subscribe({
+      next: (data: any) => {
+        console.log('wow it worked');
+        console.log(data);
+        this.games = data.games;
+      }, error: data => {
+        console.log('error:', data.error);
+        // console.error(error);
+      }, complete: () => {
+        // when does this complete run?
+        console.log('accountService login completed');
+      }
+    });
+  }
+  
+  createPost(f: NgForm): void {
+    console.log('hi');
+    console.log(f.value);
+    console.log(this.text);
   }
 }

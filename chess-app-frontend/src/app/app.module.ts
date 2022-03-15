@@ -33,6 +33,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { CreateBlogpostComponent } from './blog/create-blogpost/create-blogpost.component';
 
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { GameVisualizerComponent } from './game-visualizer/game-visualizer.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -68,7 +69,8 @@ const appRoutes: Routes = [
     ArticleComponent,
     BlogpostComponent,
     ProfileComponent,
-    CreateBlogpostComponent
+    CreateBlogpostComponent,
+    GameVisualizerComponent
   ],
   imports: [
     BrowserModule,

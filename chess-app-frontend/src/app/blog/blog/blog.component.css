@@ -1,0 +1,35 @@
+div {
+    margin: 0 20px;
+}
+
+#create {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    display: block;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #3d5130;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #557043;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    font-size: large;
+}
+
+h1 {
+    font-size: xxx-large;
+}

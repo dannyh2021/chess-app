@@ -18,9 +18,16 @@ export default (req, res) => {
                 }
             });
         } else {
-            User.findOne({email: username_email}, (error, user) => {
-                if (user) {
-                    res.status(200).send({ user_id: user._id });
+            console.log('test');
+            User.findOne({email: username_email}, (error, user2) => {
+                if (user2) {
+                    bcrypt.compare(password, user2.password, (error, same2) => {
+                        if (same2) {
+                            res.status(200).send({ user_id: user2._id, username: user2.username });
+                        } else {
+                            res.status(409).send({ msg: 'password doesn\'t match' });
+                        }
+                    });
                 } else {
                     res.status(409).send({ msg: 'username or email not found' });
                 }

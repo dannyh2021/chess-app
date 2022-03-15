@@ -1,5 +1,15 @@
-<h1>{{username}}</h1>
-<img src="http://images.chesscomfiles.com/uploads/images/noavatar_l.gif">
-<p>Games: </p>
-<button (click)="updateGames()">dev button</button>
-<p *ngFor="let game of games">{{game.username}}, {{game.date | date}}, {{game.pgn}}</p>
+<div class="container">
+    <h1>{{username}}</h1>
+    <img src="http://images.chesscomfiles.com/uploads/images/noavatar_l.gif">
+</div>
+<div class="container">
+    <h2>Games: </h2>
+    <div *ngFor="let game of games">{{game.username}}, {{game.date | date: 'medium'}}
+        <button (click)="game.visibility = !game.visibility">Show game visualizer</button>
+        <app-game-visualizer [pgn]="game.pgn" #gameViewer *ngIf="game.visibility"></app-game-visualizer>
+    </div>
+</div>
+<div class="container">
+    <h2>Sample Game: AlphaZero (white) vs Stockfish (black)</h2>
+    <app-game-visualizer></app-game-visualizer>
+</div>

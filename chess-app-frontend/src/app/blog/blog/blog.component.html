@@ -1,3 +1,9 @@
-<p>blog works!</p>
-<app-blogpost></app-blogpost>
-<app-blogpost></app-blogpost>
+<div>
+    <h1>Blog Posts</h1>
+    <div id="create">
+        <p *ngIf="!accountService.loggedIn()">Please log in if you would like to create a post.</p>
+        <button *ngIf="accountService.loggedIn()"><a href="/blog/create">Create post</a></button>
+    </div>
+    <app-blogpost></app-blogpost>
+    <app-blogpost></app-blogpost>
+</div>

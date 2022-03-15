@@ -20,5 +20,4 @@ export class BlogpostComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

@@ -20,7 +20,10 @@
     </div>
     <div class="site-buttons">
         <section>
-            <a *ngIf="accountService.loggedIn()" href="/profile" id="profile">{{accountService.getUsername()}}'s Profile</a>
+            <!--
+            <a *ngIf="accountService.loggedIn()" href="/profile" class="profile">{{accountService.getUsername()}}'s Profile</a>
+            <a *ngIf="!accountService.loggedIn()" href="/profile" class="profile">{{accountService.getUsername()}}'s Profile</a> -->
+            <a href="/profile" class="profile">{{accountService.getUsername()}}'s Profile</a>
         </section>
         <section>
             <button *ngIf="!accountService.loggedIn()"><a href="/login">Login</a></button>

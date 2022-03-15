@@ -1,0 +1,22 @@
+<div class="box">
+    <div id="left-panel">
+        <ngx-chess-board #board
+        [size]="400"
+        [lightTileColor]="'#9eba8c'"
+        [darkTileColor]="'#557043'"
+        [darkDisabled]="true"
+        [lightDisabled]="true"
+        ></ngx-chess-board>
+        <div class="controls">
+            <button (click)="first()">Start</button>
+            <button (click)="prev()">Prev</button>
+            <button (click)="next()">Next</button>
+            <button (click)="last()">End</button>
+        </div>
+    </div>
+    <div id="right-panel">
+        <h1>Move History</h1>
+        <button (click)="setMoveHistory({})">dev test</button>
+        <p style="white-space: pre-line" #moveHistory></p>
+    </div>
+</div>

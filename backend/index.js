@@ -11,6 +11,11 @@ import loginUserController from './controllers/loginUser.js';
 import saveGameController from './controllers/saveGame.js'
 import getGamesController from './controllers/getgames.js'
 
+import postBlogController from './controllers/postBlogController.js';
+import getBlogController from './controllers/getBlogController.js';
+import updateBlogController from './controllers/updateBlogController.js';
+import deleteBlogController from './controllers/deleteBlogController.js';
+
 const __dirname = path.resolve();
 
 // connect to MongoDB
@@ -55,21 +60,17 @@ app.post('/users/login', loginUserController);
 
 app.post('/games/save', saveGameController);
 
-// TODO: game get
-
 app.get('/games/get', getGamesController);
 
 // TODO: blog CRUD
 
-// TODO: forum CRUD
+app.post('/blog/post', postBlogController);
 
-// TODO: news get
+app.post('/blog/get', getBlogController);
 
-app.get('/news/get', (req, res) => {
-    console.log(req);
-    res.status(200).send( { msg: 'success' });
-    // res.status(200).send(req);
-});
+app.post('/blog/update', updateBlogController)
+
+app.post('/blog/delete', deleteBlogController);
 
 // testing get
 app.get('/dev/get', (req, res) => {
