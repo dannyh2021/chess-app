@@ -9,7 +9,7 @@ import mongoose from 'mongoose';
 import newUserController from './controllers/newUser.js';
 import loginUserController from './controllers/loginUser.js';
 import saveGameController from './controllers/saveGame.js'
-import getGamesController from './controllers/getgames.js'
+import getGamesController from './controllers/getGamesController.js'
 
 import postBlogController from './controllers/postBlogController.js';
 import getBlogController from './controllers/getBlogController.js';
