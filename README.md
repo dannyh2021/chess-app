@@ -5,6 +5,8 @@
 
 Hello. This is a simple chess web application I created for practice.
 
+![screenshot](./chess-app-screenshot.png)
+
 Features:
 
 * User authentication with the ability for users to create and login into a personal account.
