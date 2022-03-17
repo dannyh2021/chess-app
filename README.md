@@ -15,7 +15,7 @@ Features:
 * Users can read the latest chess-related news on the news page.
 * Users can read, create, delete, and like blogs on the blog page. They can also add their saved games to blogposts for others to view.
 
-### Built With
+## Built With
 
 * [MongoDB](https://www.mongodb.com)
 * [Express](https://expressjs.com/)
