@@ -33,6 +33,10 @@ External Libraries
 
 You can check out this project at http://chess.danny-huang.com
 
+## Video Demo
+
+https://www.youtube.com/watch?v=j4epTiEdlVs
+
 ## Future Improvements
 
 * Allow users to play against other players locally and online.
