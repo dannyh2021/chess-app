@@ -31,7 +31,7 @@ External Libraries
 <!-- How to View -->
 ## How to View
 
-You can check out this project at http://chess.danny-huang.com
+You can check out this project at https://chess-app-2cafc00f02ba.herokuapp.com/
 
 ## Video Demo
 
